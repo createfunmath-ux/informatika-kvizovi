@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="sr-Latn-RS">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kviz – Računarska grafika</title>
+<style>
+:root{--bg:#eef4fb;--card:#fff;--ink:#172033;--muted:#667085;--blue:#2563eb;--ok:#15803d;--bad:#b91c1c}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--ink)}
+.wrap{max-width:900px;margin:28px auto;padding:0 16px}.hero{background:#14213d;color:#fff;padding:28px;border-radius:18px}
+.hero h1{margin:0 0 8px;font-size:30px}.hero p{margin:0;opacity:.9}.card{background:var(--card);margin:18px 0;padding:22px;border-radius:16px;box-shadow:0 4px 18px #00000012}
+label.top{display:block;font-weight:bold;margin:12px 0 6px}input[type=text]{width:100%;padding:12px;border:1px solid #ccd3df;border-radius:10px;font-size:16px}
+.q{font-weight:bold;font-size:18px;margin-bottom:14px}.ans label{display:block;border:1px solid #d7deea;padding:12px;margin:8px 0;border-radius:10px;cursor:pointer}
+.ans label:hover{background:#f4f7fb}.ans input{margin-right:9px}.visual{display:flex;justify-content:center;margin:12px 0 18px}
+.rgb{position:relative;width:230px;height:180px}.circle{position:absolute;width:120px;height:120px;border-radius:50%;opacity:.72}
+.r{background:#ef4444;left:35px;top:5px}.g{background:#22c55e;left:95px;top:5px}.b{background:#2563eb;left:65px;top:58px}
+.rgb span{position:absolute;color:white;font-weight:bold;font-size:22px;z-index:2}.lr{left:72px;top:48px}.lg{left:139px;top:48px}.lb{left:104px;top:105px}
+.pixelart{display:grid;grid-template-columns:repeat(12,14px);gap:2px;padding:10px;background:#111827;border-radius:10px}
+.pixelart i{width:14px;height:14px;background:#60a5fa}.pixelart i:nth-child(3n){background:#f59e0b}.pixelart i:nth-child(5n){background:#34d399}.pixelart i:nth-child(7n){background:#f472b6}
+button{border:0;border-radius:12px;padding:14px 22px;font-size:17px;font-weight:bold;cursor:pointer;background:var(--blue);color:#fff}
+.actions{text-align:center;margin:24px 0}.result{display:none;font-size:20px}.result strong{font-size:28px}.review{margin-top:12px;font-size:16px}.ok{color:var(--ok)}.bad{color:var(--bad)}
+.small{font-size:13px;color:var(--muted);text-align:center;margin:20px 0}
+@media(max-width:600px){.hero h1{font-size:24px}.card{padding:17px}.wrap{margin:14px auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <h1>Računarska grafika</h1>
+    <p>Kratak kviz • 7. razred • 8 pitanja</p>
+  </section>
+
+  <section class="card">
+    <label class="top" for="ime">Ime i prezime</label>
+    <input id="ime" type="text" autocomplete="name" placeholder="Upiši ime i prezime">
+    <label class="top" for="odeljenje">Odeljenje</label>
+    <input id="odeljenje" type="text" placeholder="npr. VII-2">
+  </section>
+
+  <form id="quiz">
+    <section class="card question-card" data-q="q1">
+      <div class="q">1. Šta je računarska grafika?</div>
+      <div class="ans">
+        <label><input type="radio" name="q1" value="a">Oblast koja se bavi samo štampanjem dokumenata</label>
+        <label><input type="radio" name="q1" value="b">Oblast računarstva koja se bavi stvaranjem, obradom i prikazivanjem slika</label>
+        <label><input type="radio" name="q1" value="c">Programiranje računarskih mreža</label>
+        <label><input type="radio" name="q1" value="d">Način čuvanja tekstualnih dokumenata</label>
+      </div>
+    </section>
+
+    <section class="card question-card" data-q="q2">
+      <div class="q">2. Šta je piksel?</div>
+      <div class="visual"><div class="pixelart" aria-label="Ilustracija slike sastavljene od piksela">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+      <div class="ans">
+        <label><input type="radio" name="q2" value="a">Program za obradu fotografija</label>
+        <label><input type="radio" name="q2" value="b">Merna jedinica za veličinu monitora</label>
+        <label><input type="radio" name="q2" value="c">Najmanji element digitalne slike</label>
+        <label><input type="radio" name="q2" value="d">Vrsta računarskog fajla</label>
+      </div>
+    </section>
+
+    <section class="card question-card" data-q="q3">
+      <div class="q">3. Šta predstavlja rezolucija digitalne slike?</div>
+      <div class="ans">
+        <label><input type="radio" name="q3" value="a">Broj piksela od kojih je slika sastavljena</label>
+        <label><input type="radio" name="q3" value="b">Broj boja koje štampač može da odštampa</label>
+        <label><input type="radio" name="q3" value="c">Veličinu slike izraženu samo u centimetrima</label>
+        <label><input type="radio" name="q3" value="d">Brzinu prikazivanja slike na monitoru</label>
+      </div>
+    </section>
+
+    <section class="card question-card" data-q="q4">
+      <div class="q">4. Koje boje čine RGB model boja?</div>
+      <div class="visual"><div class="rgb" aria-label="Šematski prikaz RGB modela">
+        <div class="circle r"></div><div class="circle g"></div><div class="circle b"></div>
+        <span class="lr">R</span><span class="lg">G</span><span class="lb">B</span>
+      </div></div>
+      <div class="ans">
+        <label><input type="radio" name="q4" value="a">Crvena, žuta i plava</label>
+        <label><input type="radio" name="q4" value="b">Crna, bela i siva</label>
+        <label><input type="radio" name="q4" value="c">Crvena, zelena i plava</label>
+        <label><input type="radio" name="q4" value="d">Plava, žuta i crna</label>
+      </div>
+    </section>
+
+    <section class="card question-card" data-q="q5">
+      <div class="q">5. Gde se najčešće koristi CMYK model boja?</div>
+      <div class="visual" aria-label="Boje CMYK modela" style="gap:10px;flex-wrap:wrap">
+        <span style="background:#06b6d4;padding:13px;border-radius:50%;font-weight:bold">C</span>
+        <span style="background:#ec4899;padding:13px;border-radius:50%;font-weight:bold;color:white">M</span>
+        <span style="background:#facc15;padding:13px;border-radius:50%;font-weight:bold">Y</span>
+        <span style="background:#111827;padding:13px;border-radius:50%;font-weight:bold;color:white">K</span>
+      </div>
+      <div class="ans">
+        <label><input type="radio" name="q5" value="a">Za prikazivanje slike na monitorima</label>
+        <label><input type="radio" name="q5" value="b">U štampi</label>
+        <label><input type="radio" name="q5" value="c">Za snimanje zvuka</label>
+        <label><input type="radio" name="q5" value="d">Za povezivanje računara na internet</label>
+      </div>
+    </section>
+
+    <section class="card question-card" data-q="q6">
+      <div class="q">6. Koliko različitih boja približno može da prikaže TrueColor slika sa dubinom boje od 24 bita?</div>
+      <div class="ans">
+        <label><input type="radio" name="q6" value="a">256</label>
+        <label><input type="radio" name="q6" value="b">65.536</label>
+        <label><input type="radio" name="q6" value="c">1 milion</label>
+        <label><input type="radio" name="q6" value="d">16,7 miliona</label>
+      </div>
+    </section>
+
+
+    <section class="card question-card" data-q="q7">
+      <div class="q">7. Koji model boja se najčešće koristi za prikaz slike na monitoru?</div>
+      <div class="ans">
+        <label><input type="radio" name="q7" value="a">CMYK</label>
+        <label><input type="radio" name="q7" value="b">RGB</label>
+        <label><input type="radio" name="q7" value="c">PDF</label>
+        <label><input type="radio" name="q7" value="d">DPI</label>
+      </div>
+    </section>
+
+    <section class="card question-card" data-q="q8">
+      <div class="q">8. Šta se najčešće dešava kada rastersku sliku mnogo uvećamo?</div>
+      <div class="visual">
+        <div style="display:grid;grid-template-columns:repeat(8,18px);gap:2px;padding:10px;background:#111827;border-radius:10px" aria-label="Uvećani pikseli rasterske slike">
+          <i style="width:18px;height:18px;background:#f59e0b"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#f59e0b"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#f59e0b"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#f59e0b"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#f59e0b"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#f59e0b"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#f59e0b"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#f59e0b"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#f59e0b"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#f59e0b"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#f59e0b"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#f59e0b"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#f59e0b"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#60a5fa"></i><i style="width:18px;height:18px;background:#f59e0b"></i>
+        </div>
+      </div>
+      <div class="ans">
+        <label><input type="radio" name="q8" value="a">Slika postaje oštrija bez ograničenja</label>
+        <label><input type="radio" name="q8" value="b">Pikseli postaju uočljivi i slika gubi oštrinu</label>
+        <label><input type="radio" name="q8" value="c">Slika automatski prelazi u CMYK</label>
+        <label><input type="radio" name="q8" value="d">Broj piksela se automatski udvostručuje</label>
+      </div>
+    </section>
+
+    <div class="actions" style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap"><button type="submit">Završi kviz</button><button type="button" id="restartBtn" style="background:#475569">Pokreni kviz ponovo</button></div>
+  </form>
+
+  <section id="result" class="card result" aria-live="polite"></section>
+  <div class="small">Kviz radi i bez interneta. Rezultat se računa samo u pregledaču učenika.</div>
+</div>
+<script>
+const answers={q1:"b",q2:"c",q3:"a",q4:"c",q5:"b",q6:"d",q7:"b",q8:"b"};
+const quiz=document.getElementById("quiz"), result=document.getElementById("result");
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function randomizeQuiz(){
+ const actions=quiz.querySelector(".actions"), cards=Array.from(quiz.querySelectorAll(".question-card"));
+ shuffle(cards).forEach((card,index)=>{
+  const q=card.querySelector(".q"); q.textContent=q.textContent.replace(/^\d+\.\s*/, (index+1)+". ");
+  const ans=card.querySelector(".ans");
+  if(ans) shuffle(Array.from(ans.querySelectorAll("label"))).forEach(x=>ans.appendChild(x));
+  quiz.insertBefore(card,actions);
+ });
+}
+quiz.addEventListener("submit",e=>{
+ e.preventDefault();
+ const ime=document.getElementById("ime").value.trim();
+ if(!ime){alert("Upiši ime i prezime.");document.getElementById("ime").focus();return}
+ let score=0,unanswered=0,wrong=[];
+ Array.from(quiz.querySelectorAll(".question-card")).forEach((card,index)=>{
+  const q=card.dataset.q, chosen=card.querySelector('input[name="'+q+'"]:checked');
+  if(!chosen){unanswered++;wrong.push(index+1)} else if(chosen.value===answers[q])score++; else wrong.push(index+1);
+ });
+ if(unanswered&&!confirm("Nisi odgovorio/la na "+unanswered+" pitanja. Želiš li ipak da završiš test?"))return;
+ const pct=Math.round(score/8*100);
+ const ocena=pct<30?1:pct<45?2:pct<65?3:pct<85?4:5;
+ const od=document.getElementById("odeljenje").value.trim();
+ result.style.display="block";
+ result.innerHTML="<strong>Rezultat: "+score+"/8 ("+pct+"%)</strong><br><strong>Ocena: "+ocena+"</strong><br>"+ime+(od?" • "+od:"")+
+ '<div class="review '+(score===8?'ok':'bad')+'">'+(score===8?"Odlično – svi odgovori su tačni.":"Pitanja za proveru: "+wrong.join(", "))+"</div>";
+ result.scrollIntoView({behavior:"smooth",block:"center"});
+});
+document.getElementById("restartBtn").addEventListener("click",()=>{
+ quiz.reset();document.getElementById("ime").value="";document.getElementById("odeljenje").value="";
+ result.style.display="none";result.innerHTML="";randomizeQuiz();window.scrollTo({top:0,behavior:"smooth"});document.getElementById("ime").focus();
+});
+randomizeQuiz();
+</script>
+</body>
+</html>
